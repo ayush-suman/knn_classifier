@@ -46,7 +46,7 @@ where T: Classifier<Point, u8> + Sync + Send + 'static {
         let cl = Arc::clone(&arc_classifier);
 
         tokio::spawn(async move {
-            let label = cl.classify(d);
+            let label = cl.predict(&d);
             if label == l {
                 cloned_tx.send(1).await.unwrap();
             } else {

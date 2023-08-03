@@ -39,7 +39,7 @@ impl Classifier<Point, u8> for KNNClassifier {
         self.labels.push(label);
     }
 
-    fn predict(&self, data: Point) -> u8 {
+    fn predict(&self, data: &Point) -> u8 {
         let mut nearest_neighbors: Vec<(u128, u8)> = Vec::new();
 
         for (i, d) in self.data.iter().enumerate() {
