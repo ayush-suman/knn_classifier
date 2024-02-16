@@ -56,7 +56,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // let len = data.len();
     const SIZE: usize = 100;
 
-    let correct = classify_and_count(nearest_neighbor, data, labels, SIZE).await;
+    let correct = classify_and_count(nearest_neighbor, data, labels, usize::MAX).await;
 
     println!("Accuracy: {}%", correct as f64 / SIZE as f64 * 100.0);
 

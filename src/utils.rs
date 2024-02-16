@@ -38,7 +38,7 @@ where T: Classifier<Point, u8> + Sync + Send + 'static {
     let len = data.len();
     let arc_classifier = Arc::new(classifier);
 
-    for _ in 0..min(len, size) {
+    for i in 0..min(len, size) {
         let d = data.remove(0);
         let l = labels.remove(0);
 
@@ -55,6 +55,7 @@ where T: Classifier<Point, u8> + Sync + Send + 'static {
             drop(cl);
         });
     }
+
 
     let mut i = 0;
     while let Some(r) = rx.recv().await {
